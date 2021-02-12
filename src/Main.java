@@ -13,24 +13,29 @@ public class Main {
 
     public static void main(String[] args) {
 
-        // Create a new scanner
+        // Creates a scanner
         Scanner input = new Scanner(System.in);
 
-        // Set array list
+        // Sets an array list
         int[] tempList = new int[14];
 
-        // Prompt user for input and store input
-        System.out.println("Enter the hightest temperature of each day for a week (starting on Sunday): ");
+        // Prompt user for input
+        System.out.println("Enter the temperatures collected in a week ");
         for (int i = 0; i < tempList.length; i++) {
             tempList[i] = input.nextInt();
         }
 
-        // Averages temperature 
+        // Display Average Tempratures
         double calcAvg = calcAvg(tempList);
         System.out.printf("The average temperature of the week is: %.2f degree %n", calcAvg);
+
+        // Display maximum temperature
+        int calcMax = calcMax(tempList);
+        System.out.println("The maximum temperature of the week is: " + calcMax + " degree");
+
     }
-    
-// Average the temperature
+
+    //Calculates  Average temperature
     public static double calcAvg(int[] array) {
         int tempTotal = array[0];
 
@@ -38,8 +43,22 @@ public class Main {
         for (int i = 0; i < array.length; i++) {
             tempTotal = array[i] + tempTotal;
         }
-        // Return temperature average.
+        // Return average temprature
         return ((double) tempTotal / array.length);
     }
-   
+
+    // Get maximum temperature
+    public static int calcMax(int[] array) {
+        int max = array[0];
+
+        // Check and replace max temp
+        for (int i = 1; i < array.length; i++) {
+            if (max < array[i]) {
+                max = array[i];
+            }
+
+        }
+        return max;
+    }
+
 }
